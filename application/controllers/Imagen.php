@@ -258,7 +258,7 @@ $this->load->helper(array('form', 'url'));
 
 		
 
-		$dato['imagen_mostrar']='<center><img src="'.base_url().'public\images\img_total_subidas/'.$imagen_tupla['id_imagen'].'.'.$imagen_tupla['tipo'].'" alt="" class="img-rounded" width="60%" height="60%"></center>';
+		$dato['imagen_mostrar']='<center><img src="'.base_url().'public\images\img_total_subidas/'.$imagen_tupla['id_imagen'].'.'.$imagen_tupla['tipo'].'" alt="" class="img-rounded" width="60%" height="60%">asd</center>';
 
 
 		$tmpl = array ( 'table_open'  => '<table  class="table .table-bordered">' );
