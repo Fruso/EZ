@@ -95,13 +95,9 @@ $this->load->helper('url');
 			redirect('imagen/listar');
 		}
 	
-			//echo  "Sesion iniciada por ".$this->session->userdata('nombre').",  ".$this->session->userdata('correo').",  ".$this->session->userdata('Rol');
-			
-		    //redirect('usuario/crear');
+
 	}
    
-
-
 
 		function Salir(){
 			$this->session->sess_destroy();
@@ -111,14 +107,4 @@ $this->load->helper('url');
 
 
 
-
-
-
-
-
-
-
-
-
-   
 }

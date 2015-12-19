@@ -9,21 +9,13 @@ class Usuario_model extends CI_Model  {
          function usuario_login($email,$clave){
                $this->db->where('correo', $email); 
                $this->db->where('clave', md5($clave));
-               //$this->db->where('clave', ($clave)); 
                $query = $this->db->get('usuario');
 
                if ($query->num_rows() > 0){
-                   //return $query->row();
-                $ssql = "select * from usuario where correo='".$email."'";
-              
 
-                $query = $this->db->query($ssql);
                 return $query;
 
-                // $sql = "select * from usuarios where correo";
-                 // $query = mysql_query($sql);
 
-                 // return 1;
                }
                return 0;
             }
