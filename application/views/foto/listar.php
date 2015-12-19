@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    <p class="navbar-text" style=" font-size: 200%; color: #000;">Lista de Fotografías</p>
+    <p class="navbar-text" style=" font-size: 200%; color: #fff;">Lista de Fotografías</p>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

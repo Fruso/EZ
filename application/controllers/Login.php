@@ -33,10 +33,13 @@ $this->load->helper('url');
 
  		$datos['page_title'] = 'dato en texto';
 
+ 			$this->load->view('login/template_login');
+
+/*
 		$this->load->view('estructura/header');
 		$this->load->view('login/form_login',$data);
 		$this->load->view('estructura/footer');
-
+*/
 	}
 
 
@@ -50,9 +53,18 @@ $this->load->helper('url');
 			$this->load->model('rbac_model');
 
    			$resultado=$this->Usuario_model->usuario_login($_POST["usuariocorreo"],$_POST["usuarioclave"]);
-   			//$fila = mysql_fetch_array($resultado)
+			
 
+   			if(empty($resultado))
+   			{
+				$this->load->library('session');
+   				$this->session->set_flashdata('error_login', '<div class="login_texto">Error de usuario o contraseña</div>');
+				redirect('/','refresh'); 
+   			}
+   			//$fila = mysql_fetch_array($resultado)
+			
 			$row = $resultado->row_array();
+			
                 
 
 			$rol_usuaio =$this->rbac_model->get_usuario_rol($row['id_usuario'])->row_array();

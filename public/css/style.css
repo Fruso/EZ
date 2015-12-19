@@ -1,0 +1,128 @@
+
+body
+{
+
+background-image:  url("../images/site/bg2.jpg");
+background-repeat: repeat;
+background-color: #cccccc;
+
+}
+
+.contenedor_login_logo
+{
+	width: 50%;
+     margin: auto;
+    background-color: #ccc;
+
+}
+
+
+.contenedor_login
+{
+
+	width: 25%;
+    margin: auto;
+    margin-top: 10%;
+ color: #fff;
+   
+  	background-color: rgba(123, 123, 123, 0.4);
+  	font-size: 18px;
+
+    border: 5px solid;
+    border-radius: 1px;
+    border-color: rgba(123, 123, 123, 0.4);
+
+
+}
+
+.contenedor_login_header
+{
+background-color: #000;
+  height: 90px;
+  background-image:  url("../images/site/logo.png");
+  background-repeat: no-repeat;
+  background-size: 80% 80%;
+  background-position: 30% 20%;
+}
+
+.contenedor_login_body
+{
+
+ 
+  background-color: #fff;
+  padding: 20px;
+}
+
+
+
+
+.input-form {
+  display: inline-block;
+  width: 91%;
+  height: 38px;
+  padding-right: 0px;
+  padding-left: 9%;
+  border-style: none none solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #cfcfcf;
+  border-radius: 0px;
+  background-color: transparent;
+  color: #222;
+  font-size: 12px;
+  margin-bottom: 10px;
+
+
+}
+
+
+.input-form-correo {
+
+background-image: url('../images/site/login.png');
+background-position: left;
+background-repeat: no-repeat;
+background-size: 7%;
+}
+
+.input-form-clave {
+
+background-image: url('../images/site/key.png');
+background-position: left;
+background-repeat: no-repeat;
+background-size: 7%;
+}
+
+
+
+
+.boton_1 {
+  display: inline-block;
+  width: 100%;
+  height: 49px;
+  padding: 12px;
+
+  background-color: rgba(0, 158, 206, 0.7); 
+  color: white;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+
+ 
+
+text-shadow:none !important;
+
+border:none !important;
+
+box-shadow:none !important;
+}
+
+
+
+.login_texto
+{
+  color: black;
+  font-size: 12;
+  font-style: bold;
+  padding: 5px;
+}
