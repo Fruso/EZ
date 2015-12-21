@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2015 a las 22:11:51
+-- Tiempo de generación: 21-12-2015 a las 05:57:52
 -- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -121,7 +121,7 @@ INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `coment
 (46, '2090001.jpg', 0, 153, 'jpg', '', 32, 0, 0, '2015-12-17 09:28:00', '0000-00-00 00:00:00'),
 (47, 'er.png', 0, 272, 'jpg', '', 32, 0, 0, '2015-12-17 09:30:00', '0000-00-00 00:00:00'),
 (48, 'er.png', 0, 272, 'jpg', '', 32, 0, 0, '2015-12-17 09:30:00', '0000-00-00 00:00:00'),
-(49, '2090001.jpg', 0, 153, 'jpg', '', 32, 0, 0, '2015-12-17 10:01:00', '0000-00-00 00:00:00'),
+(49, '2090001.jpg', 1, 153, 'jpg', '1', 32, 30, 0, '2015-12-17 10:01:00', '2015-12-20 06:47:00'),
 (50, '2090001.jpg', 0, 153, 'jpg', '', 32, 0, 0, '2015-12-17 10:12:00', '0000-00-00 00:00:00'),
 (51, 'file_testing.jpg', 0, 512, 'jpg', '', 32, 0, 0, '2015-12-17 10:14:00', '0000-00-00 00:00:00'),
 (52, 'er.jpg', 0, 272, 'jpg', '', 32, 0, 0, '2015-12-17 10:14:00', '0000-00-00 00:00:00'),
@@ -159,7 +159,9 @@ INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `coment
 (84, 'A770', 1, 153, 'jpg', '1', 30, 30, 0, '2015-12-18 03:07:00', '2015-12-18 03:07:00'),
 (85, 'A770', 1, 714, 'jpg', '1', 30, 30, 0, '2015-12-18 03:08:00', '2015-12-18 03:08:00'),
 (86, 'A770', 0, 714, 'jpg', '', 35, 0, 0, '2015-12-18 05:49:00', '0000-00-00 00:00:00'),
-(87, 'A769', 1, 140, 'jpg', '1', 32, 36, 0, '2015-12-18 07:38:00', '2015-12-18 07:40:00');
+(87, 'A769', 1, 140, 'jpg', '1', 32, 36, 0, '2015-12-18 07:38:00', '2015-12-18 07:40:00'),
+(88, 'A769', 2, 140, 'jpg', '2', 30, 30, 0, '2015-12-19 06:21:00', '2015-12-19 06:22:00'),
+(89, 'A769', 2, 140, 'jpg', '3', 30, 30, 0, '2015-12-19 02:54:00', '2015-12-20 06:47:00');
 
 -- --------------------------------------------------------
 
@@ -12060,7 +12062,8 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `clave`, `correo`, `c
 (33, 'pepitoqweqwe', 'qweqwe', '550a141f12de6341fba65b0ad0433500', 'qwe@qwe.com', '0000-00-00', '0000-00-00', 0),
 (34, 'Michael', 'Espinoza', '202cb962ac59075b964b07152d234b70', 'michael@correo.com', '0000-00-00', '0000-00-00', 0),
 (35, 'Fernando', 'Rebolledo', '202cb962ac59075b964b07152d234b70', 'fernando@correo.com', '0000-00-00', '0000-00-00', 0),
-(36, 'Admin', 'Admin', '202cb962ac59075b964b07152d234b70', 'admin@correo.com', '0000-00-00', '0000-00-00', 0);
+(36, 'Admin', 'Admin', '202cb962ac59075b964b07152d234b70', 'admin@correo.com', '0000-00-00', '0000-00-00', 0),
+(37, 'qwe', 'qwe', '202cb962ac59075b964b07152d234b70', 'JPINO@USS.CL', '0000-00-00', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -12169,7 +12172,7 @@ ALTER TABLE `usuario_rol`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
@@ -12199,7 +12202,7 @@ ALTER TABLE `rol_permiso`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT de la tabla `usuario_rol`
 --
