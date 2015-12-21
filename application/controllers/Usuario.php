@@ -27,13 +27,11 @@ $this->load->model('Rbac_model');
 
 	//Validar Acceso
 
-	if($this->session->userdata('administrar_usuarios')=='TRUE')
-	{
-			//echo "permiso -> administrar_usuario";
-	}else
+	if(!$this->session->userdata('logged_in')=='TRUE')
 	{
 			redirect('login');
-	}	
+	}
+
 	
 }
 

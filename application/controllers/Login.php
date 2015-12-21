@@ -33,7 +33,7 @@ $this->load->helper('url');
 
  		$datos['page_title'] = 'dato en texto';
 
- 			$this->load->view('login/template_login');
+ 		$this->load->view('login/template_login');
 
 /*
 		$this->load->view('estructura/header');
@@ -94,17 +94,17 @@ $this->load->helper('url');
                 }
 
 		
-		if($rol_usuaio['rol_nombre']=="Administrador")
+		if($rol_usuaio['id_rol']=="1")
 		{
-			redirect('imagen/listar');
+			redirect('imagen/listar/pag/0/filtrar/2');
 		}
-		if($rol_usuaio['rol_nombre']=="Diseñador")
+		if($rol_usuaio['id_rol']=="2")
 		{
 			redirect('imagen/subir');
 		}
-		if($rol_usuaio['rol_nombre']=="Administrador EZ")
+		if($rol_usuaio['id_rol']=="3")
 		{
-			redirect('imagen/listar');
+			redirect('imagen/listar/pag/0/filtrar/2');
 		}
 	
 

@@ -47,5 +47,22 @@ class Imagen_model extends CI_Model  {
 	{
 		return $this->db->query("select * from products where code='".$id_producto."'");
 	}
+
+	function contar_estados($id_usuario,$estado)
+	{
+		$fila = $this->db->query("select count(id_imagen) as cantidad from imagen where subido_por='".$id_usuario."' and estado= ".$estado )->row_array();
+		return $fila['cantidad'];
+	}
+
+	function contar_estados_admin($estado)
+	{
+		$fila = $this->db->query("select count(id_imagen) as cantidad from imagen where estado= ".$estado )->row_array();
+		return $fila['cantidad'];
+	}	
+
+	function actualizar_estado_imagenes_aprobadas($codigo)
+	{
+		$this->db->query("update imagen set estado=3 where codigo='".$codigo."' and estado=1"  );
+	}		
    
 }

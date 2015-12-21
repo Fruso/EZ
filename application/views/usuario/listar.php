@@ -49,12 +49,6 @@
     </tbody>
   </table>
 
-<nav>
-  <ul class="pager">
-    <li><a href="#">Atras</a></li>
-    <li><a href="#">Siguiente</a></li>
-  </ul>
-</nav>
 
 
 

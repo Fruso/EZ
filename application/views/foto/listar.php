@@ -19,9 +19,9 @@
         <div class="form-group">
                <select class="form-control" name="filtro" >
                 <option value="1">Todas</option>
-                <option value="2">Pendientes</option>
-                <option value="3">Aprobadas</option>
-                <option value="4">Rechazadas</option>
+                <option value="2">Pendientes  (<?php echo $num_estado_pendientes; ?>)</option>
+                <option value="3">Aprobadas (<?php echo $num_estado_aprobadas; ?>)</option>
+                <option value="4">Rechazadas (<?php echo $num_estado_rechazadas; ?>)</option>
               </select>
         </div>
         <button type="submit" class="btn btn-default">Filtrar</button>
