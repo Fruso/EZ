@@ -15,16 +15,71 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+
+
       <form class="navbar-form navbar-right" role="search" style="margin-top: 20px;"  method="post" action="<?php echo base_url()."index.php/imagen/listar"; ?>">
         <div class="form-group">
                <select class="form-control" name="filtro" >
-                <option value="1">Todas</option>
-                <option value="2">Pendientes  (<?php echo $num_estado_pendientes; ?>)</option>
-                <option value="3">Aprobadas (<?php echo $num_estado_aprobadas; ?>)</option>
-                <option value="4">Rechazadas (<?php echo $num_estado_rechazadas; ?>)</option>
+            
+               
+
+                <?php 
+
+               if($this->uri->segment(6)==1)
+                 {
+                  echo  "<option value='1' selected>Todas</option>";
+                }else
+                {
+                  echo  "<option value='1'>Todas</option>";
+                }
+
+
+               if($this->uri->segment(6)==2)
+                 {
+                  echo  "<option value='2' selected>Pendientes  (".$num_estado_pendientes.")</option>";
+                }else
+                {
+                  echo  "<option value='2'>Pendientes  (".$num_estado_pendientes.")</option>";
+                }
+
+               if($this->uri->segment(6)==3)
+                 {
+                  echo  "<option value='3' selected>Aprobadas  (".$num_estado_aprobadas.")</option>";
+                }else
+                {
+                  echo  "<option value='3'>Aprobadas  (".$num_estado_aprobadas.")</option>";
+                }
+
+               if($this->uri->segment(6)==4)
+                 {
+                  echo  "<option value='4' selected>Rechazadas  (".$num_estado_rechazadas.")</option>";
+                }else
+                {
+                  echo  "<option value='4'>Rechazadas  (".$num_estado_rechazadas.")</option>";
+                }
+
+               if($this->uri->segment(6)==5)
+                 {
+                  echo  "<option value='5' selected>Subidar por 4ID</option>";
+                }else
+                {
+                  echo  "<option value='5'>Subidar por 4ID</option>";
+                }
+
+
+                ?>
+
+      
               </select>
         </div>
         <button type="submit" class="btn btn-default">Filtrar</button>
+      </form>      
+
+      <form class="navbar-form navbar-right" role="search" style="margin-top: 20px;"  method="post" action="<?php echo base_url()."index.php/imagen/listar"; ?>">
+        <div class="form-group">
+             <input type="text" name="buscar_codigo"  autocomplete="off" class="form-control" >
+        </div>
+        <button type="submit"  class="btn btn-default">Buscar</button>
       </form>
 
     </div><!-- /.navbar-collapse -->
@@ -61,10 +116,7 @@
 
 
   
-  <?php 
-  echo $tabla_listado_imagenes; 
-    
-   ?>
+<?php echo $tabla_listado_imagenes; ?>
 
 
 

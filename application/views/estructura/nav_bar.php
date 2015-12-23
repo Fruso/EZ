@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Dashboard</a>
+      <a class="navbar-brand" href="<?php echo base_url()."index.php/imagen/listar/pag/0/filtrar/2"; ?>">Dashboard</a>
     </div>
 <p class="navbar-text"><?php echo "".$this->session->userdata('nombre')." ".$this->session->userdata('apellido')." - ".$this->session->userdata('Rol'); ?></p>
     <!-- Collect the nav links, forms, and other content for toggling -->

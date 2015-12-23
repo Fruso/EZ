@@ -79,7 +79,8 @@ $this->load->helper('url');
 			        'apellido'  => "".$row['apellido'],
 			        'correo'     => "".$row['correo'],
 			        'Rol' => $rol_usuaio['rol_nombre'],
-			        'logged_in' => TRUE
+			        'logged_in' => TRUE,
+			        'id_rol' => $rol_usuaio['id_rol']
 			);
 
 			$this->session->set_userdata($newdata);
@@ -106,7 +107,10 @@ $this->load->helper('url');
 		{
 			redirect('imagen/listar/pag/0/filtrar/2');
 		}
-	
+		if($rol_usuaio['id_rol']=="4")
+		{
+			redirect('imagen/listar/pag/0/filtrar/2');
+		}	
 
 	}
    

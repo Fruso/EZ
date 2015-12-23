@@ -2,9 +2,14 @@
 body
 {
 
-background-image:  url("../images/site/bg2.jpg");
-background-repeat: repeat;
-background-color: #cccccc;
+
+
+
+ background: url("../images/site/bg2.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
 }
 
@@ -13,6 +18,7 @@ background-color: #cccccc;
 	width: 50%;
      margin: auto;
     background-color: #ccc;
+
 
 }
 
@@ -37,11 +43,11 @@ background-color: #cccccc;
 
 .contenedor_login_header
 {
-background-color: #000;
+  background-color: #000;
   height: 90px;
   background-image:  url("../images/site/logo.png");
   background-repeat: no-repeat;
-  background-size: 80% 80%;
+  background-size: 90% 80%;
   background-position: 30% 20%;
 }
 

@@ -6927,3 +6927,13 @@ a.list-group-item-danger.active:focus {
 .jumbotron h6 {
   color: #fff;
 }
+
+
+.zona_imagen_lista
+{
+display: block;
+width: 100px;
+height: 100px;
+background-color: #fff;
+
+}

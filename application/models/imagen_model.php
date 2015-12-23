@@ -27,15 +27,44 @@ class Imagen_model extends CI_Model  {
 
 	function listar_imagenes_totales($limit,$offset,$filtro_opcion)
 	{
-        $query = $this->db->query("select * from imagen ".$filtro_opcion." order by id_imagen desc LIMIT ".$limit." OFFSET ".$offset);
+        
+        if($filtro_opcion=='5')
+		{
+			$query = $this->db->query("select * from imagen where id_rol=100 order by id_imagen desc LIMIT ".$limit." OFFSET ".$offset);
+		}else
+		{
+			$query = $this->db->query("select * from imagen ".$filtro_opcion." order by id_imagen desc LIMIT ".$limit." OFFSET ".$offset);
+		}
         return $query;
 	}
 	
 	function listar_imagenes_por_usuario($id,$limit,$offset,$filtro_opcion)
 	{
-		$query = $this->db->query("select * from imagen where imagen.subido_por=".$id." ".str_replace("where","and",$filtro_opcion)." order by id_imagen desc LIMIT ".$limit." OFFSET ".$offset);
+		
+		if($filtro_opcion=='5')
+		{
+			//ESTA LINEA ES INUTIL, PERO MANTIENE FACILMENTE LA LOGICA DE LO QUE YA HAY
+			$query = $this->db->query("select * from imagen where imagen.subido_por=".$id." and id_rol=100 order by id_imagen desc LIMIT ".$limit." OFFSET ".$offset);
+		}else
+		{
+			$query = $this->db->query("select * from imagen where imagen.subido_por=".$id." ".str_replace("where","and",$filtro_opcion)." order by id_imagen desc LIMIT ".$limit." OFFSET ".$offset);
+		}
+
         return $query;
 	}
+
+
+	function listar_imagenes_por_codigo($codigo)
+	{
+		
+		$query = $this->db->query("select * from imagen where codigo='".$codigo."' order by id_imagen desc");
+
+        return $query;
+	}
+
+
+
+
 
 	function ver($id_imagen)
 	{

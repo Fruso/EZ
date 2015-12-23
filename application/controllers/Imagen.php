@@ -106,14 +106,21 @@ $this->load->helper(array('form', 'url'));
 
 
 
-		
+		if($this->session->userdata('id_rol')==1 ||  $this->session->userdata('id_rol')==2 ||  $this->session->userdata('id_rol')==3 )
+		{
+			$grupo_rol=100;
+		}else
+		{
+			$grupo_rol=0;
+		}
 
 				$imagen = array('codigo' => ''.$codigo,
         				 'estado' => 0,
         				 'tamano' => ($_FILES["archivo"]["size"] / 1024),
         				 'tipo' => $tipo_archivo,
         				 'subido_por' =>  $this->session->userdata('id_usuario'),
-                         'fecha_creacion' => $fecha);
+                         'fecha_creacion' => $fecha,
+              			 'id_rol' => $grupo_rol);
 
 				$id_imagen=$this->Imagen_model->insertar($imagen);
 
@@ -159,7 +166,7 @@ $this->load->helper(array('form', 'url'));
 
 		$this->table->set_template($tmpl);
 
-		$this->table->set_heading('Id', 'Código', 'Subido por', 'Fecha', 'Estado', 'Acción');
+		$this->table->set_heading('Fotografía', 'Código', 'Subido por', 'Fecha', 'Estado', 'Acción');
 
 
 
@@ -194,7 +201,14 @@ $this->load->helper(array('form', 'url'));
 			{
 				$filtro_opcion='where estado=2 ';
 			}
-			
+			if($this->uri->segment(6)==5)
+			{
+				$filtro_opcion='5';
+			}
+			if($this->uri->segment(6)==6)
+			{
+				$filtro_opcion='';
+			}						
 		}
 
 		//FIN FILTRO
@@ -227,32 +241,38 @@ $this->load->helper(array('form', 'url'));
 			$dato['num_estado_pendientes'] = $this->Imagen_model->contar_estados_admin("0");
 			$dato['num_estado_aprobadas'] = $this->Imagen_model->contar_estados_admin("1");
 			$dato['num_estado_rechazadas'] = $this->Imagen_model->contar_estados_admin("2");
+			if(!empty( $this->input->post('buscar_codigo')))
+			$tabla = $this->Imagen_model->listar_imagenes_por_codigo(trim($this->input->post('buscar_codigo')));
 		}else
 		{
 			$tabla = $this->Imagen_model->listar_imagenes_por_usuario($this->session->userdata('id_usuario'),$incremento,$num_pagina,$filtro_opcion);
 			$dato['num_estado_pendientes'] = $this->Imagen_model->contar_estados($this->session->userdata('id_usuario'),"0");
 			$dato['num_estado_aprobadas'] = $this->Imagen_model->contar_estados($this->session->userdata('id_usuario'),"1");
 			$dato['num_estado_rechazadas'] = $this->Imagen_model->contar_estados($this->session->userdata('id_usuario'),"2");
+
+
 		}
 		//FIN PAGINACION	
 
 		foreach ($tabla->result_array() as $row)
    		{
    			if($row['estado']==0)
-   			{$estado="Pendiente";}
+   			{$estado="<span class='label label-warning'>Pendiente</span>";}
    			else if($row['estado']==1)
-   			{$estado="Aprobada";}
+   			{$estado="<span class='label label-success'>Aprobada</span>";}
 			else if($row['estado']==2)
-   			{$estado="Rechazada";}
+   			{$estado="<span class='label label-danger'>Rechazada</span>";}
    			else if($row['estado']==3)
-   			{$estado="Obsoleta";}
+   			{$estado="<span class='label label-default'>Obsoleta</span>";}
 
 			$usuario_result = $this->Usuario_model->ver_usuario_especifio($row['subido_por']);
 			$usuario_tupla = $usuario_result->row_array(); 
 
    			$nombre=$usuario_tupla['nombre']." ".$usuario_tupla['apellido'];
 
-		 	$this->table->add_row($row['id_imagen'], $row['codigo'], $nombre, $row['fecha_creacion'], $estado,  "<a href='".base_url()."index.php/imagen/ver/". $row['id_imagen']."' class='btn btn-primary' role='button'>Detalle</a> ");
+
+
+		 	$this->table->add_row('<div class="zona_imagen_lista">'.'<center><img src="'.base_url().'public/images/img_total_subidas/'.$row['id_imagen'].'.'.$row['tipo'].'" alt="" width="100px"  height="100px"></center>'.'</div>', $row['codigo'], $nombre, $row['fecha_creacion'], $estado,  "<a href='".base_url()."index.php/imagen/ver/". $row['id_imagen']."' class='btn btn-primary' role='button'>Detalle</a> ");
 		}
 
 		$dato['tabla_listado_imagenes'] = $this->table->generate();
@@ -340,6 +360,15 @@ $this->load->helper(array('form', 'url'));
 
 
 
+$dato['textarea_observaciones'] = '<div class="form-group">
+  <label for="comment">Comentario:</label>
+  <textarea class="form-control" rows="5" id="comment" name="observaciones">'.$imagen_tupla['observaciones'].'</textarea>
+  </div>';
+
+
+
+
+
 		//DATOS GENERALES PAGINA
 		$dato['link_post_form']= base_url()."index.php/imagen/imagen_validar/".$id;
 		$dato['link_volver']= base_url()."index.php/imagen/listar";
@@ -389,11 +418,12 @@ $this->load->helper(array('form', 'url'));
 			$estado=1;
 			$this->Imagen_model->actualizar_estado_imagenes_aprobadas($this->input->post('codigo'));
 
-
+			$this->session->set_flashdata('msj_confirmacion', '<div class="alert alert-success"><strong>Fotografía aprobada por '.$this->session->userdata('nombre').' '.$this->session->userdata('apellido').'!</strong></div>');
 		}else if($this->input->post('motivo') > 1)
 		{
 			//IMAGEN RECHAZADA
 			$estado=2;
+			$this->session->set_flashdata('msj_confirmacion', '<div class="alert alert-success"><strong>Fotografía rechazada por '.$this->session->userdata('nombre').' '.$this->session->userdata('apellido').'!</strong></div>');
 		}
 
 
@@ -411,12 +441,13 @@ $this->load->helper(array('form', 'url'));
 		$imagen = array('estado' => $estado,
                     'comentario' => $this->input->post('motivo'),
                   'validado_por' => $this->session->userdata('id_usuario'),
-              'fecha_validacion' => $fecha);
+              'fecha_validacion' => $fecha,
+              'observaciones' => $this->input->post('observaciones'));
 
          $this->Imagen_model->actualizar($id,$imagen);
 
          
-   		 $this->session->set_flashdata('msj_confirmacion', '<div class="alert alert-success"><strong>Accion realizada satisfactoriamente!</strong> .</div>');
+   		 
 
         redirect('imagen/ver/'.$id,'refresh');    
 

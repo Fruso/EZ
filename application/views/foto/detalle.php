@@ -34,10 +34,14 @@
               echo $combobox_motivo;
               ?>
 
-
-
-
         </div>
+
+
+            <?php 
+              echo $textarea_observaciones;
+              ?>
+
+
 
  			    <button type="submit" class="btn btn-default" <?php if(!empty ($boton_deshabilitar) ) { echo $boton_deshabilitar; } ?>>Confirmar cambios</button>
          	<a href='<?php echo $link_volver; ?>' class='btn btn-default' role='button'>Volver</a>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-12-2015 a las 16:16:19
+-- Tiempo de generación: 23-12-2015 a las 20:23:48
 -- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -65,25 +65,43 @@ CREATE TABLE `imagen` (
   `validado_por` int(10) NOT NULL,
   `id_producto` int(10) NOT NULL,
   `fecha_creacion` datetime NOT NULL,
-  `fecha_validacion` datetime NOT NULL
+  `fecha_validacion` datetime NOT NULL,
+  `id_rol` int(10) NOT NULL,
+  `observaciones` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `imagen`
 --
 
-INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `comentario`, `subido_por`, `validado_por`, `id_producto`, `fecha_creacion`, `fecha_validacion`) VALUES
-(83, 'A770', 1, 153, 'jpg', '1', 30, 30, 0, '2015-12-18 03:05:00', '2015-12-18 03:05:00'),
-(84, 'A770', 1, 153, 'jpg', '1', 30, 30, 0, '2015-12-18 03:07:00', '2015-12-18 03:07:00'),
-(85, 'A770', 1, 714, 'jpg', '1', 30, 30, 0, '2015-12-18 03:08:00', '2015-12-18 03:08:00'),
-(86, 'A770', 0, 714, 'jpg', '', 35, 0, 0, '2015-12-18 05:49:00', '0000-00-00 00:00:00'),
-(87, 'A769', 1, 140, 'jpg', '1', 32, 36, 0, '2015-12-18 07:38:00', '2015-12-18 07:40:00'),
-(88, 'A769', 2, 140, 'jpg', '2', 30, 30, 0, '2015-12-19 06:21:00', '2015-12-19 06:22:00'),
-(89, 'A769', 2, 140, 'jpg', '3', 30, 30, 0, '2015-12-19 02:54:00', '2015-12-20 06:47:00'),
-(90, 'A821', 0, 105, 'jpg', '', 30, 0, 0, '2015-12-21 04:03:00', '0000-00-00 00:00:00'),
-(91, 'A636', 1, 39, 'jpg', '1', 32, 35, 0, '2015-12-21 04:04:00', '2015-12-21 04:05:00'),
-(92, 'A769', 2, 140, 'jpg', '3', 32, 35, 0, '2015-12-21 04:04:00', '2015-12-21 04:05:00'),
-(93, 'A780', 1, 191, 'jpg', '1', 32, 35, 0, '2015-12-21 04:04:00', '2015-12-21 04:05:00');
+INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `comentario`, `subido_por`, `validado_por`, `id_producto`, `fecha_creacion`, `fecha_validacion`, `id_rol`, `observaciones`) VALUES
+(243, 'A770', 0, 714, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
+(244, 'A780', 0, 191, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
+(245, 'A780', 0, 191, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
+(246, 'A769', 0, 140, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
+(247, 'A636', 0, 39, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
+(248, 'A770', 0, 714, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
+(249, 'A772', 3, 153, 'jpg', '1', 32, 30, 0, '2015-12-22 04:45:00', '2015-12-22 04:49:00', 100, ''),
+(250, 'A769', 1, 140, 'jpg', '1', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:59:00', 100, ''),
+(251, 'A636', 2, 39, 'jpg', '2', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:56:00', 100, ''),
+(252, 'A770', 3, 714, 'jpg', '1', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:49:00', 100, ''),
+(253, 'A772', 3, 153, 'jpg', '1', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:54:00', 100, ''),
+(254, 'A780', 2, 191, 'jpg', '3', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:54:00', 100, ''),
+(255, 'A769', 2, 140, 'jpg', '3', 30, 30, 0, '2015-12-22 04:48:00', '2015-12-22 04:58:00', 100, ''),
+(256, 'A770', 3, 714, 'jpg', '1', 30, 30, 0, '2015-12-22 04:48:00', '2015-12-22 04:49:00', 100, ''),
+(257, 'A772', 3, 153, 'jpg', '1', 30, 30, 0, '2015-12-22 04:48:00', '2015-12-22 04:48:00', 100, ''),
+(258, 'A636', 0, 39, 'jpg', '', 30, 0, 0, '2015-12-22 04:59:00', '0000-00-00 00:00:00', 100, ''),
+(259, 'A780', 2, 191, 'jpg', '2', 30, 30, 0, '2015-12-22 04:59:00', '2015-12-22 05:01:00', 100, ''),
+(260, 'A772', 3, 153, 'jpg', '1', 30, 34, 0, '2015-12-22 04:59:00', '2015-12-22 07:24:00', 100, 'xxxxxxxxxxxxxxxx'),
+(261, 'A769', 2, 140, 'jpg', '2', 30, 30, 0, '2015-12-22 04:59:00', '2015-12-22 04:59:00', 100, ''),
+(262, 'A770', 0, 714, 'jpg', '', 30, 0, 0, '2015-12-22 04:59:00', '0000-00-00 00:00:00', 100, ''),
+(263, 'A636', 1, 39, 'jpg', '1', 34, 34, 0, '2015-12-22 06:35:00', '2015-12-22 07:10:00', 0, 'qweqweasdasd'),
+(264, 'A769', 0, 140, 'jpg', '', 34, 0, 0, '2015-12-22 06:35:00', '0000-00-00 00:00:00', 0, ''),
+(265, 'A770', 1, 714, 'jpg', 'qweqweqweqwe', 34, 34, 0, '2015-12-22 06:35:00', '2015-12-22 07:01:00', 0, ''),
+(266, 'A772', 3, 153, 'jpg', '1', 34, 34, 0, '2015-12-22 06:35:00', '2015-12-22 06:40:00', 0, ''),
+(267, 'A769', 0, 140, 'jpg', '', 34, 0, 0, '2015-12-22 07:50:00', '0000-00-00 00:00:00', 0, ''),
+(268, 'A772', 1, 153, 'jpg', '1', 34, 34, 0, '2015-12-22 07:50:00', '2015-12-22 07:50:00', 0, 'qweasdzcx'),
+(269, 'A770', 0, 714, 'jpg', '', 34, 0, 0, '2015-12-22 07:50:00', '0000-00-00 00:00:00', 0, '');
 
 -- --------------------------------------------------------
 
@@ -11933,7 +11951,8 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` (`id_rol`, `rol_nombre`) VALUES
 (1, 'Administrador'),
 (2, 'Diseñador'),
-(3, 'Administrador EZ');
+(3, 'Administrador 4ID'),
+(4, 'Administrador EZ');
 
 -- --------------------------------------------------------
 
@@ -11954,7 +11973,8 @@ CREATE TABLE `rol_permiso` (
 INSERT INTO `rol_permiso` (`id_rol_permiso`, `id_rol`, `id_permiso`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 3, 2);
+(3, 3, 2),
+(4, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -11985,7 +12005,8 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `clave`, `correo`, `c
 (34, 'Michael', 'Espinoza', '202cb962ac59075b964b07152d234b70', 'michael@correo.com', '0000-00-00', '0000-00-00', 0),
 (35, 'Fernando', 'Rebolledo', '202cb962ac59075b964b07152d234b70', 'fernando@correo.com', '0000-00-00', '0000-00-00', 0),
 (36, 'Admin', 'Admin', '202cb962ac59075b964b07152d234b70', 'admin@correo.com', '0000-00-00', '0000-00-00', 0),
-(37, 'qwe', 'qwe', '202cb962ac59075b964b07152d234b70', 'JPINO@USS.CL', '0000-00-00', '0000-00-00', 1);
+(37, 'qwe', 'qwe', '202cb962ac59075b964b07152d234b70', 'JPINO@USS.CL', '0000-00-00', '0000-00-00', 1),
+(38, 'Javier', 'Toro', '6142a88d730b9aa48eed872142467129', 'javier@4id.cl', '0000-00-00', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -12006,9 +12027,10 @@ CREATE TABLE `usuario_rol` (
 INSERT INTO `usuario_rol` (`id_usuario_rol`, `id_usuario`, `id_rol`) VALUES
 (7, 30, 1),
 (9, 32, 2),
-(11, 34, 3),
+(11, 34, 4),
 (12, 35, 3),
-(13, 36, 1);
+(13, 36, 1),
+(14, 38, 1);
 
 --
 -- Índices para tablas volcadas
@@ -12093,7 +12115,7 @@ ALTER TABLE `usuario_rol`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
@@ -12113,22 +12135,22 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `id_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `rol_permiso`
 --
 ALTER TABLE `rol_permiso`
-  MODIFY `id_rol_permiso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rol_permiso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
-  MODIFY `id_usuario_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_usuario_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
