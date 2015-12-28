@@ -9,7 +9,7 @@
   <div class="panel-heading">  <h2>Crear usuario</h2></div>
   <div class="panel-body">
 
-  <?php if(!empty ($msj_confirmacion) ) { echo $msj_confirmacion; } ?>
+  <?php if(isset ($msj_confirmacion) ) { echo $msj_confirmacion; } ?>
   
  
 

@@ -22,7 +22,7 @@
 <div class="contenedor_login_body" >
 	
 
-  <?php if(!empty ($this->session->flashdata('error_login')) ) { echo $this->session->flashdata('error_login'); } ?>
+  <?php if( null !=  ($this->session->flashdata('error_login')) ) { echo $this->session->flashdata('error_login'); } ?>
 
   <form name="login" action="<?php echo base_url()."index.php/login/validar"; ?>" method="post" accept-charset="utf-8" >
   

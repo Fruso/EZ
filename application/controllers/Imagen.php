@@ -48,7 +48,7 @@ $this->load->helper(array('form', 'url'));
 
 		$dato['msj_confirmacion']='';
 
-		if( $this->input->post('post_form_subir')=="1" && !empty($_FILES['archivo']['name']))
+		if( $this->input->post('post_form_subir')=="1" && !($_FILES['archivo']['name']  == FALSE))
 	    {
 			$this->load->helper('date');
 
@@ -68,7 +68,7 @@ $this->load->helper(array('form', 'url'));
 			$producto_tupla = $this->Imagen_model->ver_producto($codigo)->row_array();
 				
 
-		    	if(!($_FILES['archivo']['type']=="image/jpeg") || !($mime=="image/jpeg") ||  empty($producto_tupla['id']))
+		    	if(!($_FILES['archivo']['type']=="image/jpeg") || !($mime=="image/jpeg") ||  $producto_tupla['id']==false )
 				{
 					/*
 					header('HTTP/1.1 500 Internal Server Error');
@@ -92,7 +92,7 @@ $this->load->helper(array('form', 'url'));
     						redirect('imagen/subir/','refresh');
     					}
 
-    					if( empty($producto_tupla['id']))
+    					if( $producto_tupla['id']==false )
 						{
 						    $response_array['Error '] = 'Codigo de Fotografia no existe';  
 					   	    header('HTTP/1.1 500 Internal Server Error');
@@ -173,7 +173,7 @@ $this->load->helper(array('form', 'url'));
 
 		//FILTRO
 		$filtro='';
-		if(!empty( $this->input->post('filtro')))
+		if(!( $this->input->post('filtro')  == FALSE  ) )
 		{
 			$filtro="filtrar/".$this->input->post('filtro');
 			redirect('imagen/listar/pag/0/'.$filtro,'refresh');
@@ -181,7 +181,7 @@ $this->load->helper(array('form', 'url'));
 
 		$filtro_url='';
 		$filtro_opcion='';
-		if( !empty($this->uri->segment(6)) )
+		if( !($this->uri->segment(6)  == FALSE ) )
 		{
 			$filtro_url='filtrar/'.$this->uri->segment(6);
 			
@@ -227,7 +227,7 @@ $this->load->helper(array('form', 'url'));
 
 		$dato['pag_siguiente']='<li><a href="'.base_url().'index.php/imagen/listar/pag/'.$num_pagina_sig.'/'.$filtro_url.'">siguiente</a></li>';
 		
-		if(empty($this->uri->segment(4)) || $num_pagina==0)
+		if(($this->uri->segment(4) == FALSE) || $num_pagina==0)
 		{
 			$dato['pag_anterior']='';
 			$num_pagina=0;
@@ -241,7 +241,7 @@ $this->load->helper(array('form', 'url'));
 			$dato['num_estado_pendientes'] = $this->Imagen_model->contar_estados_admin("0");
 			$dato['num_estado_aprobadas'] = $this->Imagen_model->contar_estados_admin("1");
 			$dato['num_estado_rechazadas'] = $this->Imagen_model->contar_estados_admin("2");
-			if(!empty( $this->input->post('buscar_codigo')))
+			if(!( $this->input->post('buscar_codigo')  == FALSE ))
 			$tabla = $this->Imagen_model->listar_imagenes_por_codigo(trim($this->input->post('buscar_codigo')));
 		}else
 		{
@@ -304,7 +304,7 @@ $this->load->helper(array('form', 'url'));
 		$usuario_tupla_subido_por = $this->Usuario_model->ver_usuario_especifio($imagen_tupla['subido_por'])->row_array();
 		$usuario_tupla_validado_por = $this->Usuario_model->ver_usuario_especifio($imagen_tupla['validado_por'])->row_array();
 		
-		if(empty($imagen_tupla['validado_por']))
+		if(($imagen_tupla['validado_por']  == FALSE))
 		{ 
 			$nombre_validado_por = "--";
 		}

@@ -2,7 +2,7 @@
 <div class="container">
 
   
-  <?php if(!empty ($this->session->flashdata('msj_confirmacion')) ) { echo $this->session->flashdata('msj_confirmacion'); } ?>
+  <?php if(null != ($this->session->flashdata('msj_confirmacion')) ) { echo $this->session->flashdata('msj_confirmacion'); } ?>
 
 <div class="panel panel-default">
   <div class="panel-heading">  <h2>Detalle Imagenes</h2></div>
@@ -43,7 +43,7 @@
 
 
 
- 			    <button type="submit" class="btn btn-default" <?php if(!empty ($boton_deshabilitar) ) { echo $boton_deshabilitar; } ?>>Confirmar cambios</button>
+ 			    <button type="submit" class="btn btn-default" <?php if( isset ($boton_deshabilitar) ) { echo $boton_deshabilitar; } ?>>Confirmar cambios</button>
          	<a href='<?php echo $link_volver; ?>' class='btn btn-default' role='button'>Volver</a>
 
 

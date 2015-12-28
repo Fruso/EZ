@@ -10,7 +10,7 @@
   <div class="panel-heading">  <h2>Confirmar actualización usuario</h2></div>
   <div class="panel-body">
 
-<?php if(!empty ($msj_confirmacion) ) { echo $msj_confirmacion; } ?>
+<?php if(isset ($msj_confirmacion) ) { echo $msj_confirmacion; } ?>
 
       <form role="form" name="login" action="<?php echo base_url()."index.php/usuario/editar/".$fila['id_usuario']; ?>" method="post" accept-charset="utf-8" >
    		

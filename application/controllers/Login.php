@@ -55,7 +55,7 @@ $this->load->helper('url');
    			$resultado=$this->Usuario_model->usuario_login($_POST["usuariocorreo"],$_POST["usuarioclave"]);
 			
 
-   			if(empty($resultado))
+   			if($resultado == 0)
    			{
 				$this->load->library('session');
    				$this->session->set_flashdata('error_login', '<div class="login_texto">Error de usuario o contraseña</div>');

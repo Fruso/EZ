@@ -6,7 +6,7 @@
   <div class="panel-heading">  <h2>Detalle usuario</h2></div>
   <div class="panel-body">
 
-  <?php if(!empty ($msj_confirmacion) ) { echo $msj_confirmacion; } ?>
+  <?php if(isset ($msj_confirmacion) ) { echo $msj_confirmacion; } ?>
   
    <?php $fila = $dato_usuario->row_array();  ?>
    <?php $fila_get_usuario_rol = $get_usuario_rol->row_array();  ?>

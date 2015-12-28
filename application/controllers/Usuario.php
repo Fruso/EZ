@@ -162,7 +162,7 @@ $this->load->model('Rbac_model');
         				 'clave' => md5( $this->input->post('clave')),
                           'correo' => $this->input->post('correo'));
        
-		if(!empty ($this->input->post('nombre') ))
+		if(! ($this->input->post('nombre') == FALSE ))
 		{
 				$id_usuario = $this->Usuario_model->insertar($persona);
 				$this->Rbac_model->insertar_usuario_rol($id_usuario, $this->input->post('rol'));
