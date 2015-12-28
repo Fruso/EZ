@@ -19,9 +19,9 @@ $this->load->library('form_validation');
 
 $this->load->helper('url');
 
-$this->load->model('Usuario_model');
+$this->load->model('usuario_model');
 
-$this->load->model('Rbac_model');
+$this->load->model('rbac_model');
 
 
 
@@ -58,12 +58,12 @@ $this->load->model('Rbac_model');
 	
 	
 
-		$dato['dato_usuario'] = $this->Usuario_model->ver_usuario_especifio($id);
+		$dato['dato_usuario'] = $this->usuario_model->ver_usuario_especifio($id);
 
 
-		$dato['roles'] =  $this->Rbac_model->listar_roles();
+		$dato['roles'] =  $this->rbac_model->listar_roles();
 
-		$dato['get_usuario_rol'] =  $this->Rbac_model->get_usuario_rol($id);
+		$dato['get_usuario_rol'] =  $this->rbac_model->get_usuario_rol($id);
 
 
    		  $this->load->view('estructura/header');
@@ -96,7 +96,7 @@ $this->load->model('Rbac_model');
 	    		    $persona = array('nombre' => $this->input->post('nombre'),
         				'apellido' => $this->input->post('apellido'),
                           'correo' => $this->input->post('correo'));
-	    			$this->Usuario_model->actualizar($id,$persona, $this->input->post('rol'));
+	    			$this->usuario_model->actualizar($id,$persona, $this->input->post('rol'));
 
 
 
@@ -106,14 +106,14 @@ $this->load->model('Rbac_model');
         				'apellido' => $this->input->post('apellido'),
         				 'clave' => md5( $this->input->post('clave')),
                           'correo' => $this->input->post('correo'));
-	    			$this->Usuario_model->actualizar($id,$persona, $this->input->post('rol'));
+	    			$this->usuario_model->actualizar($id,$persona, $this->input->post('rol'));
 	    	}
 
 	    	$dato['msj_confirmacion'] = '<div class="alert alert-success"><strong>accion realizada!</strong> .</div>';
 
-    	  $dato['dato_usuario'] = $this->Usuario_model->ver_usuario_especifio($id);
-		  $dato['roles'] =  $this->Rbac_model->listar_roles();
-		  $dato['get_usuario_rol'] =  $this->Rbac_model->get_usuario_rol($id);
+    	  $dato['dato_usuario'] = $this->usuario_model->ver_usuario_especifio($id);
+		  $dato['roles'] =  $this->rbac_model->listar_roles();
+		  $dato['get_usuario_rol'] =  $this->rbac_model->get_usuario_rol($id);
 
 		  $this->load->view('estructura/header');
    		  $this->load->view('estructura/nav_bar');
@@ -122,9 +122,9 @@ $this->load->model('Rbac_model');
 
 		}else
 		{
-		  $dato['dato_usuario'] = $this->Usuario_model->ver_usuario_especifio($id);
-		  $dato['roles'] =  $this->Rbac_model->listar_roles();
-		  $dato['get_usuario_rol'] =  $this->Rbac_model->get_usuario_rol($id);
+		  $dato['dato_usuario'] = $this->usuario_model->ver_usuario_especifio($id);
+		  $dato['roles'] =  $this->rbac_model->listar_roles();
+		  $dato['get_usuario_rol'] =  $this->rbac_model->get_usuario_rol($id);
 
 
    		  $this->load->view('estructura/header');
@@ -140,8 +140,8 @@ $this->load->model('Rbac_model');
 
 	function Eliminar($id)
 	{
-		$this->Usuario_model->eliminar($id);
-		$this->Rbac_model->eliminar_usuario_rol($id);
+		$this->usuario_model->eliminar($id);
+		$this->rbac_model->eliminar_usuario_rol($id);
 
 		redirect('usuario/listar/','refresh');
 	}
@@ -153,7 +153,7 @@ $this->load->model('Rbac_model');
 
        $dato['titulo'] = 'Actualizar usuario';
 
-       $dato['roles'] =  $this->Rbac_model->listar_roles();
+       $dato['roles'] =  $this->rbac_model->listar_roles();
        //$dato['accion'] = site_url('person/updatePerson');
 
 
@@ -164,8 +164,8 @@ $this->load->model('Rbac_model');
        
 		if(! ($this->input->post('nombre') == FALSE ))
 		{
-				$id_usuario = $this->Usuario_model->insertar($persona);
-				$this->Rbac_model->insertar_usuario_rol($id_usuario, $this->input->post('rol'));
+				$id_usuario = $this->usuario_model->insertar($persona);
+				$this->rbac_model->insertar_usuario_rol($id_usuario, $this->input->post('rol'));
 
 				//echo "esto se imprime ".$id;
 				 $dato['msj_confirmacion'] = '<div class="alert alert-success"><strong>Usuario creado satisfactoriamente!</strong> .</div>';
@@ -185,7 +185,7 @@ $this->load->model('Rbac_model');
 	function Listar(){
 
 		
-		 $dato['listado_query'] = $this->Usuario_model->listar();
+		 $dato['listado_query'] = $this->usuario_model->listar();
 
  		  $this->load->view('estructura/header');
    		  $this->load->view('estructura/nav_bar');

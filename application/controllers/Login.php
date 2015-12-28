@@ -28,7 +28,7 @@ $this->load->helper('url');
 	{
 		
   	
-		$this->load->model('Usuario_model');
+		$this->load->model('usuario_model');
 		$data['title'] =  'vacio';
 
  		$datos['page_title'] = 'dato en texto';
@@ -49,10 +49,10 @@ $this->load->helper('url');
 
 	function validar(){
    			//echo 'usuario: ' . $_POST["usuariocorreo"]. ", clave: ".$_POST["usuarioclave"];
-			$this->load->model('Usuario_model');
+			$this->load->model('usuario_model');
 			$this->load->model('rbac_model');
 
-   			$resultado=$this->Usuario_model->usuario_login($_POST["usuariocorreo"],$_POST["usuarioclave"]);
+   			$resultado=$this->usuario_model->usuario_login($_POST["usuariocorreo"],$_POST["usuarioclave"]);
 			
 
    			if($resultado == 0)

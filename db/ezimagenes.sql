@@ -1,38 +1,24 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 3.5.4
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-12-2015 a las 20:37:49
--- Versión del servidor: 10.1.8-MariaDB
--- Versión de PHP: 5.6.14
+-- Servidor: localhost
+-- Tiempo de generación: 28-12-2015 a las 17:04:56
+-- Versión del servidor: 5.1.73-1
+-- Versión de PHP: 5.3.3-7+squeeze19
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `applycar`
+-- Base de datos: `ezimagenes`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ci_sessions`
---
-
-CREATE TABLE `ci_sessions` (
-  `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(45) NOT NULL DEFAULT '0',
-  `user_agent` varchar(120) NOT NULL,
-  `last_activity` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -40,12 +26,13 @@ CREATE TABLE `ci_sessions` (
 -- Estructura de tabla para la tabla `historial`
 --
 
-CREATE TABLE `historial` (
+CREATE TABLE IF NOT EXISTS `historial` (
   `id_historial` int(10) NOT NULL,
   `id_usuario` int(10) NOT NULL,
   `titulo` int(50) NOT NULL,
   `descripcion` int(100) NOT NULL,
-  `fecha_creado` date NOT NULL
+  `fecha_creado` date NOT NULL,
+  PRIMARY KEY (`id_historial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -54,8 +41,8 @@ CREATE TABLE `historial` (
 -- Estructura de tabla para la tabla `imagen`
 --
 
-CREATE TABLE `imagen` (
-  `id_imagen` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `imagen` (
+  `id_imagen` int(10) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(50) NOT NULL,
   `estado` int(1) NOT NULL,
   `tamano` int(20) NOT NULL,
@@ -67,45 +54,23 @@ CREATE TABLE `imagen` (
   `fecha_creacion` datetime NOT NULL,
   `fecha_validacion` datetime NOT NULL,
   `id_rol` int(10) NOT NULL,
-  `observaciones` varchar(2000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `observaciones` varchar(2000) NOT NULL,
+  PRIMARY KEY (`id_imagen`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=305 ;
 
 --
 -- Volcado de datos para la tabla `imagen`
 --
 
 INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `comentario`, `subido_por`, `validado_por`, `id_producto`, `fecha_creacion`, `fecha_validacion`, `id_rol`, `observaciones`) VALUES
-(243, 'A770', 0, 714, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
-(244, 'A780', 0, 191, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
-(245, 'A780', 0, 191, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
-(246, 'A769', 0, 140, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
-(247, 'A636', 0, 39, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
-(248, 'A770', 0, 714, 'jpg', '', 32, 0, 0, '2015-12-22 04:45:00', '0000-00-00 00:00:00', 100, ''),
-(249, 'A772', 3, 153, 'jpg', '1', 32, 30, 0, '2015-12-22 04:45:00', '2015-12-22 04:49:00', 100, ''),
-(250, 'A769', 1, 140, 'jpg', '1', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:59:00', 100, ''),
-(251, 'A636', 2, 39, 'jpg', '2', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:56:00', 100, ''),
-(252, 'A770', 3, 714, 'jpg', '1', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:49:00', 100, ''),
-(253, 'A772', 3, 153, 'jpg', '1', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:54:00', 100, ''),
-(254, 'A780', 2, 191, 'jpg', '3', 32, 30, 0, '2015-12-22 04:47:00', '2015-12-22 04:54:00', 100, ''),
-(255, 'A769', 2, 140, 'jpg', '3', 30, 30, 0, '2015-12-22 04:48:00', '2015-12-22 04:58:00', 100, ''),
-(256, 'A770', 3, 714, 'jpg', '1', 30, 30, 0, '2015-12-22 04:48:00', '2015-12-22 04:49:00', 100, ''),
-(257, 'A772', 3, 153, 'jpg', '1', 30, 30, 0, '2015-12-22 04:48:00', '2015-12-22 04:48:00', 100, ''),
-(258, 'A636', 0, 39, 'jpg', '', 30, 0, 0, '2015-12-22 04:59:00', '0000-00-00 00:00:00', 100, ''),
-(259, 'A780', 2, 191, 'jpg', '2', 30, 30, 0, '2015-12-22 04:59:00', '2015-12-22 05:01:00', 100, ''),
-(260, 'A772', 3, 153, 'jpg', '1', 30, 34, 0, '2015-12-22 04:59:00', '2015-12-22 07:24:00', 100, 'xxxxxxxxxxxxxxxx'),
-(261, 'A769', 2, 140, 'jpg', '2', 30, 30, 0, '2015-12-22 04:59:00', '2015-12-22 04:59:00', 100, ''),
-(262, 'A770', 0, 714, 'jpg', '', 30, 0, 0, '2015-12-22 04:59:00', '0000-00-00 00:00:00', 100, ''),
-(263, 'A636', 1, 39, 'jpg', '1', 34, 34, 0, '2015-12-22 06:35:00', '2015-12-22 07:10:00', 0, 'qweqweasdasd'),
-(264, 'A769', 0, 140, 'jpg', '', 34, 0, 0, '2015-12-22 06:35:00', '0000-00-00 00:00:00', 0, ''),
-(265, 'A770', 1, 714, 'jpg', 'qweqweqweqwe', 34, 34, 0, '2015-12-22 06:35:00', '2015-12-22 07:01:00', 0, ''),
-(266, 'A772', 3, 153, 'jpg', '1', 34, 34, 0, '2015-12-22 06:35:00', '2015-12-22 06:40:00', 0, ''),
-(267, 'A769', 0, 140, 'jpg', '', 34, 0, 0, '2015-12-22 07:50:00', '0000-00-00 00:00:00', 0, ''),
-(268, 'A772', 1, 153, 'jpg', '1', 34, 34, 0, '2015-12-22 07:50:00', '2015-12-22 07:50:00', 0, 'qweasdzcx'),
-(269, 'A770', 0, 714, 'jpg', '', 34, 0, 0, '2015-12-22 07:50:00', '0000-00-00 00:00:00', 0, ''),
-(270, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-23 08:35:00', '0000-00-00 00:00:00', 100, ''),
-(271, 'A770', 0, 714, 'jpg', '', 30, 0, 0, '2015-12-23 08:35:00', '0000-00-00 00:00:00', 100, ''),
-(272, 'A636', 0, 39, 'jpg', '', 30, 0, 0, '2015-12-23 08:35:00', '0000-00-00 00:00:00', 100, ''),
-(273, 'A772', 0, 153, 'jpg', '', 30, 0, 0, '2015-12-23 08:35:00', '0000-00-00 00:00:00', 100, '');
+(297, 'A636', 0, 39, 'jpg', '', 30, 0, 0, '2015-12-28 02:40:00', '0000-00-00 00:00:00', 100, ''),
+(298, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-28 02:40:00', '0000-00-00 00:00:00', 100, ''),
+(299, 'A772', 0, 153, 'jpg', '', 30, 0, 0, '2015-12-28 02:40:00', '0000-00-00 00:00:00', 100, ''),
+(300, 'A780', 0, 191, 'jpg', '', 30, 0, 0, '2015-12-28 02:40:00', '0000-00-00 00:00:00', 100, ''),
+(301, 'A770', 3, 714, 'jpg', '1', 30, 30, 0, '2015-12-28 02:40:00', '2015-12-28 02:57:00', 100, 'Testiando'),
+(302, 'A770', 1, 686, 'jpg', '1', 30, 30, 0, '2015-12-28 03:10:00', '2015-12-28 03:10:00', 100, ''),
+(303, 'A780', 0, 191, 'jpg', '', 32, 0, 0, '2015-12-28 03:38:00', '0000-00-00 00:00:00', 100, ''),
+(304, 'A772', 0, 153, 'jpg', '', 34, 0, 0, '2015-12-28 03:39:00', '0000-00-00 00:00:00', 0, '');
 
 -- --------------------------------------------------------
 
@@ -113,10 +78,11 @@ INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `coment
 -- Estructura de tabla para la tabla `permiso`
 --
 
-CREATE TABLE `permiso` (
-  `id_permiso` int(10) NOT NULL,
-  `permiso_tipo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `permiso` (
+  `id_permiso` int(10) NOT NULL AUTO_INCREMENT,
+  `permiso_tipo` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_permiso`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -133,10 +99,11 @@ INSERT INTO `permiso` (`id_permiso`, `permiso_tipo`) VALUES
 -- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `producto` (
-  `id_prodcuto` int(10) NOT NULL,
-  `codigo` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `producto` (
+  `id_prodcuto` int(10) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_prodcuto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -144,8 +111,8 @@ CREATE TABLE `producto` (
 -- Estructura de tabla para la tabla `products`
 --
 
-CREATE TABLE `products` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `description` text COLLATE utf8_spanish_ci,
   `code` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -155,20 +122,31 @@ CREATE TABLE `products` (
   `stock` int(11) NOT NULL,
   `stock_vitacura` int(10) NOT NULL DEFAULT '0',
   `stock_auxiliar` int(11) NOT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `product_brand_id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  `product_brand_id` int(10) unsigned NOT NULL,
   `tag1` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `tag2` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `tag3` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `photo_name` varchar(75) COLLATE utf8_spanish_ci NOT NULL,
   `photo_type` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `photo_size` int(10) UNSIGNED NOT NULL,
+  `photo_size` int(10) unsigned NOT NULL,
   `photo_path` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `categoria1` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   `categoria2` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   `outlet` int(1) NOT NULL DEFAULT '0',
-  `oferta` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `oferta` int(1) NOT NULL DEFAULT '0',
+  KEY `category_id` (`category_id`),
+  KEY `category_id_2` (`category_id`),
+  KEY `product_brand_id` (`product_brand_id`),
+  KEY `tag1` (`tag1`),
+  KEY `tag2` (`tag2`),
+  KEY `tag3` (`tag3`),
+  KEY `categoria1` (`categoria1`),
+  KEY `categoria2` (`categoria2`),
+  KEY `id` (`id`),
+  KEY `oferta` (`stock`,`oferta`),
+  KEY `outlet` (`stock`,`outlet`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=22221 ;
 
 --
 -- Volcado de datos para la tabla `products`
@@ -11943,10 +11921,11 @@ INSERT INTO `products` (`id`, `name`, `description`, `code`, `price`, `precio2`,
 -- Estructura de tabla para la tabla `rol`
 --
 
-CREATE TABLE `rol` (
-  `id_rol` int(10) NOT NULL,
-  `rol_nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `rol` (
+  `id_rol` int(10) NOT NULL AUTO_INCREMENT,
+  `rol_nombre` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -11964,11 +11943,12 @@ INSERT INTO `rol` (`id_rol`, `rol_nombre`) VALUES
 -- Estructura de tabla para la tabla `rol_permiso`
 --
 
-CREATE TABLE `rol_permiso` (
-  `id_rol_permiso` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rol_permiso` (
+  `id_rol_permiso` int(10) NOT NULL AUTO_INCREMENT,
   `id_rol` int(10) NOT NULL,
-  `id_permiso` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_permiso` int(50) NOT NULL,
+  PRIMARY KEY (`id_rol_permiso`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `rol_permiso`
@@ -11986,16 +11966,17 @@ INSERT INTO `rol_permiso` (`id_rol_permiso`, `id_rol`, `id_permiso`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
-  `id_usuario` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id_usuario` int(10) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `clave` varchar(50) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `creado_fecha` date NOT NULL,
   `modificado_fecha` date NOT NULL,
-  `estado` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `estado` int(1) NOT NULL,
+  UNIQUE KEY `id_usuario` (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -12018,11 +11999,12 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `clave`, `correo`, `c
 -- Estructura de tabla para la tabla `usuario_rol`
 --
 
-CREATE TABLE `usuario_rol` (
-  `id_usuario_rol` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuario_rol` (
+  `id_usuario_rol` int(10) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(10) NOT NULL,
-  `id_rol` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_rol` int(10) NOT NULL,
+  PRIMARY KEY (`id_usuario_rol`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `usuario_rol`
@@ -12036,125 +12018,6 @@ INSERT INTO `usuario_rol` (`id_usuario_rol`, `id_usuario`, `id_rol`) VALUES
 (13, 36, 1),
 (14, 38, 1);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `ci_sessions`
---
-ALTER TABLE `ci_sessions`
-  ADD PRIMARY KEY (`session_id`),
-  ADD KEY `last_activity_idx` (`last_activity`);
-
---
--- Indices de la tabla `historial`
---
-ALTER TABLE `historial`
-  ADD PRIMARY KEY (`id_historial`);
-
---
--- Indices de la tabla `imagen`
---
-ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`id_imagen`);
-
---
--- Indices de la tabla `permiso`
---
-ALTER TABLE `permiso`
-  ADD PRIMARY KEY (`id_permiso`);
-
---
--- Indices de la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id_prodcuto`);
-
---
--- Indices de la tabla `products`
---
-ALTER TABLE `products`
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `category_id_2` (`category_id`),
-  ADD KEY `product_brand_id` (`product_brand_id`),
-  ADD KEY `tag1` (`tag1`),
-  ADD KEY `tag2` (`tag2`),
-  ADD KEY `tag3` (`tag3`),
-  ADD KEY `categoria1` (`categoria1`),
-  ADD KEY `categoria2` (`categoria2`),
-  ADD KEY `id` (`id`),
-  ADD KEY `oferta` (`stock`,`oferta`),
-  ADD KEY `outlet` (`stock`,`outlet`);
-
---
--- Indices de la tabla `rol`
---
-ALTER TABLE `rol`
-  ADD PRIMARY KEY (`id_rol`);
-
---
--- Indices de la tabla `rol_permiso`
---
-ALTER TABLE `rol_permiso`
-  ADD PRIMARY KEY (`id_rol_permiso`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD UNIQUE KEY `id_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `usuario_rol`
---
-ALTER TABLE `usuario_rol`
-  ADD PRIMARY KEY (`id_usuario_rol`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `imagen`
---
-ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=274;
---
--- AUTO_INCREMENT de la tabla `permiso`
---
-ALTER TABLE `permiso`
-  MODIFY `id_permiso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `producto`
---
-ALTER TABLE `producto`
-  MODIFY `id_prodcuto` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22221;
---
--- AUTO_INCREMENT de la tabla `rol`
---
-ALTER TABLE `rol`
-  MODIFY `id_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `rol_permiso`
---
-ALTER TABLE `rol_permiso`
-  MODIFY `id_rol_permiso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
---
--- AUTO_INCREMENT de la tabla `usuario_rol`
---
-ALTER TABLE `usuario_rol`
-  MODIFY `id_usuario_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,5 +1,5 @@
 <?php
-class Rbac_model extends CI_Model  {
+class rbac_model extends CI_Model  {
    function __construct(){
       parent::__construct ();
       $this->load->database(); 

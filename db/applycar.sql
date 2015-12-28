@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2015 a las 06:24:11
+-- Tiempo de generación: 28-12-2015 a las 21:05:36
 -- Versión del servidor: 10.1.8-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -19,20 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `applycar`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ci_sessions`
---
-
-CREATE TABLE `ci_sessions` (
-  `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(45) NOT NULL DEFAULT '0',
-  `user_agent` varchar(120) NOT NULL,
-  `last_activity` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -102,13 +88,19 @@ INSERT INTO `imagen` (`id_imagen`, `codigo`, `estado`, `tamano`, `tipo`, `coment
 (267, 'A769', 0, 140, 'jpg', '', 34, 0, 0, '2015-12-22 07:50:00', '0000-00-00 00:00:00', 0, ''),
 (268, 'A772', 1, 153, 'jpg', '1', 34, 34, 0, '2015-12-22 07:50:00', '2015-12-22 07:50:00', 0, 'qweasdzcx'),
 (269, 'A770', 1, 714, 'jpg', '1', 34, 30, 0, '2015-12-22 07:50:00', '2015-12-28 04:58:00', 0, ''),
-(270, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-28 05:38:00', '0000-00-00 00:00:00', 100, ''),
+(270, 'A769', 1, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:38:00', '2015-12-28 02:45:00', 100, ''),
 (271, 'A111', 1, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:39:00', '2015-12-28 05:47:00', 100, 'qwe'),
 (272, 'A769', 2, 140, 'jpg', '2', 30, 30, 0, '2015-12-28 05:39:00', '2015-12-28 05:47:00', 100, 'qwe'),
-(273, 'A769', 1, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:48:00', '2015-12-28 06:11:00', 100, ''),
+(273, 'A769', 3, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:48:00', '2015-12-28 06:11:00', 100, ''),
 (274, 'A769', 3, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:48:00', '2015-12-28 06:05:00', 100, ''),
 (275, 'A769', 3, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:48:00', '2015-12-28 06:10:00', 100, ''),
-(276, 'A769', 3, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:52:00', '2015-12-28 05:59:00', 100, 'wqeee');
+(276, 'A769', 3, 140, 'jpg', '1', 30, 30, 0, '2015-12-28 05:52:00', '2015-12-28 05:59:00', 100, 'wqeee'),
+(277, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-28 03:15:00', '0000-00-00 00:00:00', 100, ''),
+(278, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-28 04:10:00', '0000-00-00 00:00:00', 100, ''),
+(279, 'A636', 0, 39, 'jpg', '', 30, 0, 0, '2015-12-28 04:10:00', '0000-00-00 00:00:00', 100, ''),
+(280, 'A636', 0, 39, 'jpg', '', 30, 0, 0, '2015-12-28 04:13:00', '0000-00-00 00:00:00', 100, ''),
+(281, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-28 04:13:00', '0000-00-00 00:00:00', 100, ''),
+(282, 'A769', 0, 140, 'jpg', '', 30, 0, 0, '2015-12-28 09:04:00', '0000-00-00 00:00:00', 100, '');
 
 -- --------------------------------------------------------
 
@@ -12046,13 +12038,6 @@ INSERT INTO `usuario_rol` (`id_usuario_rol`, `id_usuario`, `id_rol`) VALUES
 --
 
 --
--- Indices de la tabla `ci_sessions`
---
-ALTER TABLE `ci_sessions`
-  ADD PRIMARY KEY (`session_id`),
-  ADD KEY `last_activity_idx` (`last_activity`);
-
---
 -- Indices de la tabla `historial`
 --
 ALTER TABLE `historial`
@@ -12124,7 +12109,7 @@ ALTER TABLE `usuario_rol`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=277;
+  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
@@ -12159,7 +12144,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
-  MODIFY `id_usuario_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_usuario_rol` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
